@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SineWaveTrial", "SineWaveTrial\SineWaveTrial.csproj", "{98766F1B-AB53-4842-A081-EBE9F7D69869}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98766F1B-AB53-4842-A081-EBE9F7D69869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98766F1B-AB53-4842-A081-EBE9F7D69869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98766F1B-AB53-4842-A081-EBE9F7D69869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98766F1B-AB53-4842-A081-EBE9F7D69869}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E3E2800-8061-4D56-9C19-3BE02811B8F1}
+	EndGlobalSection
+EndGlobal
