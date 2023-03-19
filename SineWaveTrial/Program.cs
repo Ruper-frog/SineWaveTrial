@@ -10,11 +10,23 @@ namespace SineWaveTrial
 {
     internal class Program
     {
+        static void Normal(string str)
+        {
+            while (true)
+            {
+                double timestamp = Stopwatch.GetTimestamp();
+                double seconds = timestamp / Stopwatch.Frequency;
+
+                Console.SetCursorPosition(0, (int)Math.Round((Math.Sin(seconds) + 1) * 3));
+
+                Console.Write(str);
+            }
+        }
         static void Main(string[] args)
         {
-            string[,] DRAWING_GAME = new string[12, 13];
+            string[,] DRAWING_GAME = new string[12, 12];
 
-            int[,] Lengths = new int[13, 13];
+            int[,] Lengths = new int[13, 12];
 
             string prompt = @"                                                                                                   
 ▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████      ▄████  ▄▄▄       ███▄ ▄███▓▓█████
@@ -30,228 +42,229 @@ namespace SineWaveTrial
                                                                                                    
 ";
 
-            int Num = 1;
+            int Row = 0, Column = 0;
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num, i] = 0;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row, i] = 0;
 
-            DRAWING_GAME[Num, 1] = "          ";
-            DRAWING_GAME[Num, 2] = "▓█████▄";
-            DRAWING_GAME[Num, 3] = "▒██▀ ██▌";
-            DRAWING_GAME[Num, 4] = "░██   █▌";
-            DRAWING_GAME[Num, 5] = "░▓█▄   ▌";
-            DRAWING_GAME[Num, 6] = "░▒████▓ ";
-            DRAWING_GAME[Num, 7] = " ▒▒▓  ▒ ";
-            DRAWING_GAME[Num, 8] = " ░ ▒  ▒";
-            DRAWING_GAME[Num, 9] = " ░ ░  ░";
-            DRAWING_GAME[Num, 10] = "   ░";
-            DRAWING_GAME[Num, 11] = " ░";
-            DRAWING_GAME[Num, 12] = "          ";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = "▓█████▄";
+            DRAWING_GAME[Row, Column++] = "▒██▀ ██▌";
+            DRAWING_GAME[Row, Column++] = "░██   █▌";
+            DRAWING_GAME[Row, Column++] = "░▓█▄   ▌";
+            DRAWING_GAME[Row, Column++] = "░▒████▓ ";
+            DRAWING_GAME[Row, Column++] = " ▒▒▓  ▒ ";
+            DRAWING_GAME[Row, Column++] = " ░ ▒  ▒";
+            DRAWING_GAME[Row, Column++] = " ░ ░  ░";
+            DRAWING_GAME[Row, Column++] = "   ░";
+            DRAWING_GAME[Row, Column++] = " ░";
+            DRAWING_GAME[Row, Column++] = "          ";
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            Num++;
+            Row++; Column = 0;
 
-            DRAWING_GAME[Num, 1] = "          ";
-            DRAWING_GAME[Num, 2] = " ██▀███";
-            DRAWING_GAME[Num, 3] = "▓██ ▒ ██";
-            DRAWING_GAME[Num, 4] = "▓██ ░▄█ ";
-            DRAWING_GAME[Num, 5] = "▒██▀▀█▄ ";
-            DRAWING_GAME[Num, 6] = "░██▓ ▒██▒";
-            DRAWING_GAME[Num, 7] = "░ ▒▓ ░▒▓░";
-            DRAWING_GAME[Num, 8] = "  ░▒ ░ ▒░";
-            DRAWING_GAME[Num, 9] = "  ░░   ░ ";
-            DRAWING_GAME[Num, 10] = "   ░     ";
-            DRAWING_GAME[Num, 11] = "          ";
-            DRAWING_GAME[Num, 12] = "";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = " ██▀███";
+            DRAWING_GAME[Row, Column++] = "▓██ ▒ ██";
+            DRAWING_GAME[Row, Column++] = "▓██ ░▄█ ";
+            DRAWING_GAME[Row, Column++] = "▒██▀▀█▄ ";
+            DRAWING_GAME[Row, Column++] = "░██▓ ▒██▒";
+            DRAWING_GAME[Row, Column++] = "░ ▒▓ ░▒▓░";
+            DRAWING_GAME[Row, Column++] = "  ░▒ ░ ▒░";
+            DRAWING_GAME[Row, Column++] = "  ░░   ░ ";
+            DRAWING_GAME[Row, Column++] = "   ░     ";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            Num++;
+            Row++; Column = 0;
 
-            DRAWING_GAME[Num, 1] = "             ";
-            DRAWING_GAME[Num, 2] = "  ▄▄▄      ";
-            DRAWING_GAME[Num, 3] = "▒▒████▄    ";
-            DRAWING_GAME[Num, 4] = "▒▒██  ▀█▄  ";
-            DRAWING_GAME[Num, 5] = " ░██▄▄▄▄██ ";
-            DRAWING_GAME[Num, 6] = "▒ ▓█   ▓██▒";
-            DRAWING_GAME[Num, 7] = "░ ▒▒   ▓▒█░";
-            DRAWING_GAME[Num, 8] = "░  ▒   ▒▒ ░";
-            DRAWING_GAME[Num, 9] = "   ░   ▒   ";
-            DRAWING_GAME[Num, 10] = "       ░  ░";
-            DRAWING_GAME[Num, 11] = "           ";
-            DRAWING_GAME[Num, 12] = "";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "  ▄▄▄      ";
+            DRAWING_GAME[Row, Column++] = "▒▒████▄    ";
+            DRAWING_GAME[Row, Column++] = "▒▒██  ▀█▄  ";
+            DRAWING_GAME[Row, Column++] = " ░██▄▄▄▄██ ";
+            DRAWING_GAME[Row, Column++] = "▒ ▓█   ▓██▒";
+            DRAWING_GAME[Row, Column++] = "░ ▒▒   ▓▒█░";
+            DRAWING_GAME[Row, Column++] = "░  ▒   ▒▒ ░";
+            DRAWING_GAME[Row, Column++] = "   ░   ▒   ";
+            DRAWING_GAME[Row, Column++] = "       ░  ░";
+            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            Num++;
+            Row++; Column = 0;
 
-            DRAWING_GAME[Num, 1] = "             ";
-            DRAWING_GAME[Num, 2] = " █     █░";
-            DRAWING_GAME[Num, 3] = "▓█░ █ ░█░";
-            DRAWING_GAME[Num, 4] = "▒█░ █ ░█ ";
-            DRAWING_GAME[Num, 5] = "░█░ █ ░█ ";
-            DRAWING_GAME[Num, 6] = "░░██▒██▓ ";
-            DRAWING_GAME[Num, 7] = "░ ▓░▒ ▒  ";
-            DRAWING_GAME[Num, 8] = "  ▒ ░ ░  ";
-            DRAWING_GAME[Num, 9] = "  ░   ░  ";
-            DRAWING_GAME[Num, 10] = "    ░    ";
-            DRAWING_GAME[Num, 11] = "             ";
-            DRAWING_GAME[Num, 12] = "";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = " █     █░";
+            DRAWING_GAME[Row, Column++] = "▓█░ █ ░█░";
+            DRAWING_GAME[Row, Column++] = "▒█░ █ ░█ ";
+            DRAWING_GAME[Row, Column++] = "░█░ █ ░█ ";
+            DRAWING_GAME[Row, Column++] = "░░██▒██▓ ";
+            DRAWING_GAME[Row, Column++] = "░ ▓░▒ ▒  ";
+            DRAWING_GAME[Row, Column++] = "  ▒ ░ ░  ";
+            DRAWING_GAME[Row, Column++] = "  ░   ░  ";
+            DRAWING_GAME[Row, Column++] = "    ░    ";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            Num++;
+            Row++; Column = 0;
 
-            DRAWING_GAME[Num, 1] = "             ";
-            DRAWING_GAME[Num, 2] = " ██▓ ";
-            DRAWING_GAME[Num, 3] = "▓██▒ ";
-            DRAWING_GAME[Num, 4] = "▒██▒▓";
-            DRAWING_GAME[Num, 5] = "░██░▓";
-            DRAWING_GAME[Num, 6] = "░██░▒";
-            DRAWING_GAME[Num, 7] = "░▓  ░";
-            DRAWING_GAME[Num, 8] = " ▒ ░░";
-            DRAWING_GAME[Num, 9] = " ▒ ░ ";
-            DRAWING_GAME[Num, 10] = " ░  ";
-            DRAWING_GAME[Num, 11] = "             ";
-            DRAWING_GAME[Num, 12] = "";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = " ██▓ ";
+            DRAWING_GAME[Row, Column++] = "▓██▒ ";
+            DRAWING_GAME[Row, Column++] = "▒██▒▓";
+            DRAWING_GAME[Row, Column++] = "░██░▓";
+            DRAWING_GAME[Row, Column++] = "░██░▒";
+            DRAWING_GAME[Row, Column++] = "░▓  ░";
+            DRAWING_GAME[Row, Column++] = " ▒ ░░";
+            DRAWING_GAME[Row, Column++] = " ▒ ░ ";
+            DRAWING_GAME[Row, Column++] = " ░  ";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            Num++;
+            Row++; Column = 0;
 
-            DRAWING_GAME[Num, 1] = "             ";
-            DRAWING_GAME[Num, 2] = "███▄    █ ";
-            DRAWING_GAME[Num, 3] = "██ ▀█   █ ";
-            DRAWING_GAME[Num, 4] = "██  ▀█ ██▒";
-            DRAWING_GAME[Num, 5] = "██▒  ▐▌██▒";
-            DRAWING_GAME[Num, 6] = "██░   ▓██░";
-            DRAWING_GAME[Num, 7] = " ▒░   ▒ ▒ ";
-            DRAWING_GAME[Num, 8] = " ░░   ░ ▒░";
-            DRAWING_GAME[Num, 9] = "  ░   ░ ░ ";
-            DRAWING_GAME[Num, 10] = "        ░ ";
-            DRAWING_GAME[Num, 11] = "             ";
-            DRAWING_GAME[Num, 12] = "";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "███▄    █ ";
+            DRAWING_GAME[Row, Column++] = "██ ▀█   █ ";
+            DRAWING_GAME[Row, Column++] = "██  ▀█ ██▒";
+            DRAWING_GAME[Row, Column++] = "██▒  ▐▌██▒";
+            DRAWING_GAME[Row, Column++] = "██░   ▓██░";
+            DRAWING_GAME[Row, Column++] = " ▒░   ▒ ▒ ";
+            DRAWING_GAME[Row, Column++] = " ░░   ░ ▒░";
+            DRAWING_GAME[Row, Column++] = "  ░   ░ ░ ";
+            DRAWING_GAME[Row, Column++] = "        ░ ";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            Num++;
+            Row++; Column = 0;
 
-            DRAWING_GAME[Num, 1] = "             ";
-            DRAWING_GAME[Num, 2] = "  ▄████    ";
-            DRAWING_GAME[Num, 3] = " ██▒ ▀█▒ ";
-            DRAWING_GAME[Num, 4] = "▒██░▄▄▄░  ";
-            DRAWING_GAME[Num, 5] = "░▓█  ██▓ ";
-            DRAWING_GAME[Num, 6] = "░▒▓███▀▒ ";
-            DRAWING_GAME[Num, 7] = " ░▒   ▒  ";
-            DRAWING_GAME[Num, 8] = "  ░   ░ ";
-            DRAWING_GAME[Num, 9] = "░ ░   ░ ";
-            DRAWING_GAME[Num, 10] = "      ░ ";
-            DRAWING_GAME[Num, 11] = "             ";
-            DRAWING_GAME[Num, 12] = "";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "  ▄████    ";
+            DRAWING_GAME[Row, Column++] = " ██▒ ▀█▒ ";
+            DRAWING_GAME[Row, Column++] = "▒██░▄▄▄░  ";
+            DRAWING_GAME[Row, Column++] = "░▓█  ██▓ ";
+            DRAWING_GAME[Row, Column++] = "░▒▓███▀▒ ";
+            DRAWING_GAME[Row, Column++] = " ░▒   ▒  ";
+            DRAWING_GAME[Row, Column++] = "  ░   ░ ";
+            DRAWING_GAME[Row, Column++] = "░ ░   ░ ";
+            DRAWING_GAME[Row, Column++] = "      ░ ";
+            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "";
 
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
+            Row++; Column = 0;
 
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "  ▄████ ";
+            DRAWING_GAME[Row, Column++] = " ██▒ ▀█▒";
+            DRAWING_GAME[Row, Column++] = "▒██░▄▄▄░";
+            DRAWING_GAME[Row, Column++] = "░▓█  ██▓";
+            DRAWING_GAME[Row, Column++] = "░▒▓███▀▒";
+            DRAWING_GAME[Row, Column++] = " ░▒   ▒ ";
+            DRAWING_GAME[Row, Column++] = "  ░   ░ ";
+            DRAWING_GAME[Row, Column++] = "░ ░   ░ ";
+            DRAWING_GAME[Row, Column++] = "      ░ ";
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            Num++;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            DRAWING_GAME[Num, 1] = "                  ";
-            DRAWING_GAME[Num, 2] = "  ▄████ ";
-            DRAWING_GAME[Num, 3] = " ██▒ ▀█▒";
-            DRAWING_GAME[Num, 4] = "▒██░▄▄▄░";
-            DRAWING_GAME[Num, 5] = "░▓█  ██▓";
-            DRAWING_GAME[Num, 6] = "░▒▓███▀▒";
-            DRAWING_GAME[Num, 7] = " ░▒   ▒ ";
-            DRAWING_GAME[Num, 8] = "  ░   ░ ";
-            DRAWING_GAME[Num, 9] = "░ ░   ░ ";
-            DRAWING_GAME[Num, 10] = "      ░ ";
-            DRAWING_GAME[Num, 11] = "                  ";
-            DRAWING_GAME[Num, 12] = "";
+            Row++; Column = 0;
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = " ▄▄▄      ";
+            DRAWING_GAME[Row, Column++] = "▒████▄    ";
+            DRAWING_GAME[Row, Column++] = "▒██  ▀█▄  ";
+            DRAWING_GAME[Row, Column++] = "░██▄▄▄▄██ ";
+            DRAWING_GAME[Row, Column++] = " ▓█   ▓██▒";
+            DRAWING_GAME[Row, Column++] = " ▒▒   ▓▒█░";
+            DRAWING_GAME[Row, Column++] = "  ▒   ▒▒ ░";
+            DRAWING_GAME[Row, Column++] = "  ░   ▒   ";
+            DRAWING_GAME[Row, Column++] = "      ░  ░";
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            Num++;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            DRAWING_GAME[Num, 1] = "                  ";
-            DRAWING_GAME[Num, 2] = " ▄▄▄      ";
-            DRAWING_GAME[Num, 3] = "▒████▄    ";
-            DRAWING_GAME[Num, 4] = "▒██  ▀█▄  ";
-            DRAWING_GAME[Num, 5] = "░██▄▄▄▄██ ";
-            DRAWING_GAME[Num, 6] = " ▓█   ▓██▒";
-            DRAWING_GAME[Num, 7] = " ▒▒   ▓▒█░";
-            DRAWING_GAME[Num, 8] = "  ▒   ▒▒ ░";
-            DRAWING_GAME[Num, 9] = "  ░   ▒   ";
-            DRAWING_GAME[Num, 10] = "      ░  ░";
-            DRAWING_GAME[Num, 11] = "                  ";
-            DRAWING_GAME[Num, 12] = "";
+            Row++; Column = 0;
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = " ███▄ ▄███▓";
+            DRAWING_GAME[Row, Column++] = "▓██▒▀█▀ ██▒";
+            DRAWING_GAME[Row, Column++] = "▓██    ▓██░";
+            DRAWING_GAME[Row, Column++] = "▒██    ▒██ ";
+            DRAWING_GAME[Row, Column++] = "▒██▒   ░██▒";
+            DRAWING_GAME[Row, Column++] = "░ ▒░   ░  ░";
+            DRAWING_GAME[Row, Column++] = "░  ░      ░";
+            DRAWING_GAME[Row, Column++] = "░      ░   ";
+            DRAWING_GAME[Row, Column++] = "       ░   ";
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            Num++;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
-            DRAWING_GAME[Num, 1] = "                  ";
-            DRAWING_GAME[Num, 2] = " ███▄ ▄███▓";
-            DRAWING_GAME[Num, 3] = "▓██▒▀█▀ ██▒";
-            DRAWING_GAME[Num, 4] = "▓██    ▓██░";
-            DRAWING_GAME[Num, 5] = "▒██    ▒██ ";
-            DRAWING_GAME[Num, 6] = "▒██▒   ░██▒";
-            DRAWING_GAME[Num, 7] = "░ ▒░   ░  ░";
-            DRAWING_GAME[Num, 8] = "░  ░      ░";
-            DRAWING_GAME[Num, 9] = "░      ░   ";
-            DRAWING_GAME[Num, 10] = "       ░   ";
-            DRAWING_GAME[Num, 11] = "                  ";
-            DRAWING_GAME[Num, 12] = "";
+            Row++; Column = 0;
 
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "▓█████";
+            DRAWING_GAME[Row, Column++] = "▓█   ▀";
+            DRAWING_GAME[Row, Column++] = "▒███  ";
+            DRAWING_GAME[Row, Column++] = "▒▓█  ▄";
+            DRAWING_GAME[Row, Column++] = "░▒████▒";
+            DRAWING_GAME[Row, Column++] = "░░ ▒░ ░";
+            DRAWING_GAME[Row, Column++] = " ░ ░  ░";
+            DRAWING_GAME[Row, Column++] = "   ░  ";
+            DRAWING_GAME[Row, Column++] = "   ░  ░";
+            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "";
 
-            Num++;
-
-            DRAWING_GAME[Num, 1] = "                  ";
-            DRAWING_GAME[Num, 2] = "▓█████";
-            DRAWING_GAME[Num, 3] = "▓█   ▀";
-            DRAWING_GAME[Num, 4] = "▒███  ";
-            DRAWING_GAME[Num, 5] = "▒▓█  ▄";
-            DRAWING_GAME[Num, 6] = "░▒████▒";
-            DRAWING_GAME[Num, 7] = "░░ ▒░ ░";
-            DRAWING_GAME[Num, 8] = " ░ ░  ░";
-            DRAWING_GAME[Num, 9] = "   ░  ";
-            DRAWING_GAME[Num, 10] = "   ░  ░";
-            DRAWING_GAME[Num, 11] = "                  ";
-            DRAWING_GAME[Num, 12] = "";
-
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Num + 1, i] = DRAWING_GAME[Num, i].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
+                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
-            Console.CursorVisible = true;
+            Console.CursorVisible = false;
 
             Sum(Lengths);
 
-            //AnotherTry(DRAWING_GAME, Lengths);
+            AnotherTry(DRAWING_GAME, Lengths);
         }
         static void Sum(int[,] Lengths)
         {
-            for (int i = 0; i < Lengths.GetLength(0); i++)
+            /*for (int i = 0; i < Lengths.GetLength(0); i++)
             {
                 for (int j = 0; j < Lengths.GetLength(1); j++)
                 {
-                    Console.Write(Lengths[i, j] + "\t");
+                    Console.Write(Lengths[i, j] + "\t|");
                 }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+            Console.WriteLine("\n\n");*/
             for (int i = 1; i < Lengths.GetLength(0); i++)
             {
-                for (int j = 1; j < Lengths.GetLength(1); j++)
+                for (int j = Lengths.GetLength(1) -1; j >= 1 ; j--)
                 {
                     int Count = 0;
 
@@ -261,13 +274,15 @@ namespace SineWaveTrial
                     Lengths[i, j] = Count;
                 }
             }
-            for (int i = 0; i < Lengths.GetLength(0); i++)
+            /*for (int i = 0; i < Lengths.GetLength(0); i++)
             {
                 for (int j = 0; j < Lengths.GetLength(1); j++)
                 {
-                    Console.Write(Lengths[i, j] + "\t");
+                    Console.Write(Lengths[i, j] + "\t|");
                 }
+                Console.WriteLine();
             }
+            Console.WriteLine("\n\n");*/
         }
         static void FirstTry(string[] DRAWING_GAME, int[] Lengths)
         {
@@ -316,6 +331,8 @@ namespace SineWaveTrial
         }
         static void AnotherTry(string[,] DRAWING_GAME, int[,] Lengths)
         {
+            PrintLetter(DRAWING_GAME, 0, Lengths);
+
             PrintLetter(DRAWING_GAME, 1, Lengths);
 
             PrintLetter(DRAWING_GAME, 2, Lengths);
@@ -323,8 +340,6 @@ namespace SineWaveTrial
             PrintLetter(DRAWING_GAME, 3, Lengths);
 
             //PrintLetter(DRAWING_GAME, 4, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 5, Lengths);
 
             //PrintLetter(DRAWING_GAME, 6, Lengths);
 
@@ -347,7 +362,7 @@ namespace SineWaveTrial
                 double timestamp = Stopwatch.GetTimestamp();
                 double seconds = timestamp / Stopwatch.Frequency;
 
-                Console.SetCursorPosition(Lengths[Row, i], i);
+                Console.SetCursorPosition(Lengths[Row, Row], i);
                 Console.Write(DRAWING_GAME[Row,i]);
             }
         }   
