@@ -207,17 +207,13 @@ namespace SineWaveTrial
             void SetToZero(int[] Length)
             {
                 for (int i = 0; i < Lengths.GetLength(0); i++)
-                {
-                    Lengths[i] = 0;
-                }
+                   Lengths[i] = 0;
             }
 
             for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
-            {
                 Lengths[i + 1] = DRAWING_GAME[i, 0].Length;
-            }
 
-            PrintArray(Lengths);
+            //PrintArray(Lengths);
 
             Sum(Lengths);
 
@@ -225,7 +221,7 @@ namespace SineWaveTrial
 
             Console.WriteLine("\n\n");
 
-            PrintArray(Lengths);
+            //PrintArray(Lengths);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
@@ -233,6 +229,7 @@ namespace SineWaveTrial
 
             //Normal(prompt);
 
+            LetMeHaveAGo(DRAWING_GAME, Lengths);
         }
         static void PrintArray(int[] Lengths)
         {
@@ -248,22 +245,21 @@ namespace SineWaveTrial
             {
                 int Count = 0;
 
-                for (int T = Lengths.Length - 1; T > 0; T--)
-                {
+                for (int T = Lengths.Length - 1 - i; T > 0; T--)
                     Count += Lengths[T];
-                }
-                Lengths[i] = Count;
+
+                Lengths[Lengths.Length - 1 - i] = Count;
             }
         }
-        static void PrintLetter(string[,] DRAWING_GAME, int Row, int[,] Lengths, int Sine)
+        static void PrintLetter(string[,] DRAWING_GAME, int Row, int[] Lengths, int Sine)
         {
             for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
             {
-                Console.SetCursorPosition(Lengths[Row, Row], i + Sine);
+                Console.SetCursorPosition(Lengths[Row], i + Sine);
                 Console.Write(DRAWING_GAME[Row, i]);
             }
         }
-        static void LetMeHaveAGo(string[,] DRAWING_GAME, int[,] Lengths)
+        static void LetMeHaveAGo(string[,] DRAWING_GAME, int[] Lengths)
         {
             while (true)
             {
