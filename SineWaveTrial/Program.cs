@@ -44,9 +44,6 @@ namespace SineWaveTrial
 
             int Row = 0, Column = 0;
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row, i] = 0;
-
             DRAWING_GAME[Row, Column++] = "          ";
             DRAWING_GAME[Row, Column++] = "▓█████▄";
             DRAWING_GAME[Row, Column++] = "▒██▀ ██▌";
@@ -59,9 +56,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "   ░";
             DRAWING_GAME[Row, Column++] = " ░";
             DRAWING_GAME[Row, Column++] = "          ";
-
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
             Row++; Column = 0;
 
@@ -78,9 +72,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "          ";
             DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
-
             Row++; Column = 0;
 
             DRAWING_GAME[Row, Column++] = "             ";
@@ -93,11 +84,8 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "░  ▒   ▒▒ ░";
             DRAWING_GAME[Row, Column++] = "   ░   ▒   ";
             DRAWING_GAME[Row, Column++] = "       ░  ░";
-            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "             ";
             DRAWING_GAME[Row, Column++] = "";
-
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
             Row++; Column = 0;
 
@@ -114,9 +102,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "             ";
             DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
-
             Row++; Column = 0;
 
             DRAWING_GAME[Row, Column++] = "             ";
@@ -131,9 +116,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = " ░  ";
             DRAWING_GAME[Row, Column++] = "             ";
             DRAWING_GAME[Row, Column++] = "";
-
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
             Row++; Column = 0;
 
@@ -150,9 +132,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "             ";
             DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
-
             Row++; Column = 0;
 
             DRAWING_GAME[Row, Column++] = "             ";
@@ -167,9 +146,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "      ░ ";
             DRAWING_GAME[Row, Column++] = "             ";
             DRAWING_GAME[Row, Column++] = "";
-
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
             Row++; Column = 0;
 
@@ -186,9 +162,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "                  ";
             DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
-
             Row++; Column = 0;
 
             DRAWING_GAME[Row, Column++] = "                  ";
@@ -203,9 +176,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "      ░  ░";
             DRAWING_GAME[Row, Column++] = "                  ";
             DRAWING_GAME[Row, Column++] = "";
-
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
 
             Row++; Column = 0;
 
@@ -222,9 +192,6 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "                  ";
             DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
-
             Row++; Column = 0;
 
             DRAWING_GAME[Row, Column++] = "                  ";
@@ -240,16 +207,36 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "                  ";
             DRAWING_GAME[Row, Column++] = "";
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
-                Lengths[Row + 1, i] = DRAWING_GAME[Row, i].Length;
+            SetToZero(Lengths);
+
+            void SetToZero(int[,] Length)
+            {
+                for (int i = 0; i < Lengths.GetLength(0); i++)
+                {
+                    for (int j = 0; j < Length.GetLength(1); j++)
+                    {
+                        Lengths[i, j] = 0;
+                    }
+                }
+            }
+
+            for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
+            {
+                for (int j = 0; j < DRAWING_GAME.GetLength(1); j++)
+                {
+                    Lengths[i, j] = DRAWING_GAME[i, j].Length;
+                }
+            }
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
             Console.CursorVisible = false;
 
-            Sum(Lengths);
+            //Normal(prompt);
 
-            AnotherTry(DRAWING_GAME, Lengths);
+            YOULazyFuck(Lengths);
+
+            //AnotherTry(DRAWING_GAME, Lengths);
         }
         static void Sum(int[,] Lengths)
         {
@@ -283,6 +270,27 @@ namespace SineWaveTrial
                 Console.WriteLine();
             }
             Console.WriteLine("\n\n");*/
+        }
+        static void YOULazyFuck(int[,] Lengths)
+        {
+            for (int i = 0; i < Lengths.GetLength(0); i++)
+            {
+                for (int j = 0; j < Lengths.GetLength(1); j++)
+                {
+                    Console.Write(Lengths[i, j] + "\t|");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("\n\n");
+            for (int i = 0; i < Lengths.GetLength(0); i++)
+            {
+                for (int j = Lengths.GetLength(1) -1; j >= 0; j--)
+                {
+                    Console.Write(Lengths[i, j] + "\t|");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("\n\n");
         }
         static void FirstTry(string[] DRAWING_GAME, int[] Lengths)
         {
