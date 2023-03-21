@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Data;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Threading;
 
 namespace SineWaveTrial
@@ -24,9 +20,9 @@ namespace SineWaveTrial
         }
         static void Main(string[] args)
         {
-            string[,] DRAWING_GAME = new string[12, 12];
+            string[,] DRAWING_GAME = new string[11, 12];
 
-            int[,] Lengths = new int[13, 12];
+            int[,] Lengths = new int[12, 12];
 
             string prompt = @"                                                                                                   
 ▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████      ▄████  ▄▄▄       ███▄ ▄███▓▓█████
@@ -44,37 +40,37 @@ namespace SineWaveTrial
 
             int Row = 0, Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "          ";
-            DRAWING_GAME[Row, Column++] = "▓█████▄";
+            DRAWING_GAME[Row, Column++] = "        ";
+            DRAWING_GAME[Row, Column++] = "▓█████▄ ";
             DRAWING_GAME[Row, Column++] = "▒██▀ ██▌";
             DRAWING_GAME[Row, Column++] = "░██   █▌";
             DRAWING_GAME[Row, Column++] = "░▓█▄   ▌";
             DRAWING_GAME[Row, Column++] = "░▒████▓ ";
             DRAWING_GAME[Row, Column++] = " ▒▒▓  ▒ ";
-            DRAWING_GAME[Row, Column++] = " ░ ▒  ▒";
-            DRAWING_GAME[Row, Column++] = " ░ ░  ░";
-            DRAWING_GAME[Row, Column++] = "   ░";
-            DRAWING_GAME[Row, Column++] = " ░";
-            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = " ░ ▒  ▒ ";
+            DRAWING_GAME[Row, Column++] = " ░ ░  ░ ";
+            DRAWING_GAME[Row, Column++] = "   ░    ";
+            DRAWING_GAME[Row, Column++] = " ░      ";
+            DRAWING_GAME[Row, Column++] = "        ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "          ";
-            DRAWING_GAME[Row, Column++] = " ██▀███";
-            DRAWING_GAME[Row, Column++] = "▓██ ▒ ██";
-            DRAWING_GAME[Row, Column++] = "▓██ ░▄█ ";
-            DRAWING_GAME[Row, Column++] = "▒██▀▀█▄ ";
+            DRAWING_GAME[Row, Column++] = "         ";
+            DRAWING_GAME[Row, Column++] = " ██▀███  ";
+            DRAWING_GAME[Row, Column++] = "▓██ ▒ ██ ";
+            DRAWING_GAME[Row, Column++] = "▓██ ░▄█  ";
+            DRAWING_GAME[Row, Column++] = "▒██▀▀█▄  ";
             DRAWING_GAME[Row, Column++] = "░██▓ ▒██▒";
             DRAWING_GAME[Row, Column++] = "░ ▒▓ ░▒▓░";
             DRAWING_GAME[Row, Column++] = "  ░▒ ░ ▒░";
             DRAWING_GAME[Row, Column++] = "  ░░   ░ ";
             DRAWING_GAME[Row, Column++] = "   ░     ";
-            DRAWING_GAME[Row, Column++] = "          ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "         ";
+            DRAWING_GAME[Row, Column++] = "         ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "           ";
             DRAWING_GAME[Row, Column++] = "  ▄▄▄      ";
             DRAWING_GAME[Row, Column++] = "▒▒████▄    ";
             DRAWING_GAME[Row, Column++] = "▒▒██  ▀█▄  ";
@@ -84,12 +80,12 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "░  ▒   ▒▒ ░";
             DRAWING_GAME[Row, Column++] = "   ░   ▒   ";
             DRAWING_GAME[Row, Column++] = "       ░  ░";
-            DRAWING_GAME[Row, Column++] = "             ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "           ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "         ";
             DRAWING_GAME[Row, Column++] = " █     █░";
             DRAWING_GAME[Row, Column++] = "▓█░ █ ░█░";
             DRAWING_GAME[Row, Column++] = "▒█░ █ ░█ ";
@@ -99,12 +95,12 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "  ▒ ░ ░  ";
             DRAWING_GAME[Row, Column++] = "  ░   ░  ";
             DRAWING_GAME[Row, Column++] = "    ░    ";
-            DRAWING_GAME[Row, Column++] = "             ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "         ";
+            DRAWING_GAME[Row, Column++] = "         ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "     ";
             DRAWING_GAME[Row, Column++] = " ██▓ ";
             DRAWING_GAME[Row, Column++] = "▓██▒ ";
             DRAWING_GAME[Row, Column++] = "▒██▒▓";
@@ -113,13 +109,13 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "░▓  ░";
             DRAWING_GAME[Row, Column++] = " ▒ ░░";
             DRAWING_GAME[Row, Column++] = " ▒ ░ ";
-            DRAWING_GAME[Row, Column++] = " ░  ";
-            DRAWING_GAME[Row, Column++] = "             ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = " ░   ";
+            DRAWING_GAME[Row, Column++] = "     ";
+            DRAWING_GAME[Row, Column++] = "     ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "             ";
+            DRAWING_GAME[Row, Column++] = "          ";
             DRAWING_GAME[Row, Column++] = "███▄    █ ";
             DRAWING_GAME[Row, Column++] = "██ ▀█   █ ";
             DRAWING_GAME[Row, Column++] = "██  ▀█ ██▒";
@@ -129,27 +125,12 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = " ░░   ░ ▒░";
             DRAWING_GAME[Row, Column++] = "  ░   ░ ░ ";
             DRAWING_GAME[Row, Column++] = "        ░ ";
-            DRAWING_GAME[Row, Column++] = "             ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = "          ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "             ";
-            DRAWING_GAME[Row, Column++] = "  ▄████    ";
-            DRAWING_GAME[Row, Column++] = " ██▒ ▀█▒ ";
-            DRAWING_GAME[Row, Column++] = "▒██░▄▄▄░  ";
-            DRAWING_GAME[Row, Column++] = "░▓█  ██▓ ";
-            DRAWING_GAME[Row, Column++] = "░▒▓███▀▒ ";
-            DRAWING_GAME[Row, Column++] = " ░▒   ▒  ";
-            DRAWING_GAME[Row, Column++] = "  ░   ░ ";
-            DRAWING_GAME[Row, Column++] = "░ ░   ░ ";
-            DRAWING_GAME[Row, Column++] = "      ░ ";
-            DRAWING_GAME[Row, Column++] = "             ";
-            DRAWING_GAME[Row, Column++] = "";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "        ";
             DRAWING_GAME[Row, Column++] = "  ▄████ ";
             DRAWING_GAME[Row, Column++] = " ██▒ ▀█▒";
             DRAWING_GAME[Row, Column++] = "▒██░▄▄▄░";
@@ -159,12 +140,27 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "  ░   ░ ";
             DRAWING_GAME[Row, Column++] = "░ ░   ░ ";
             DRAWING_GAME[Row, Column++] = "      ░ ";
-            DRAWING_GAME[Row, Column++] = "                  ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "        ";
+            DRAWING_GAME[Row, Column++] = "        ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "     ▄████ ";
+            DRAWING_GAME[Row, Column++] = "    ██▒ ▀█▒";
+            DRAWING_GAME[Row, Column++] = "   ▒██░▄▄▄░";
+            DRAWING_GAME[Row, Column++] = "   ░▓█  ██▓";
+            DRAWING_GAME[Row, Column++] = "   ░▒▓███▀▒";
+            DRAWING_GAME[Row, Column++] = "    ░▒   ▒ ";
+            DRAWING_GAME[Row, Column++] = "     ░   ░ ";
+            DRAWING_GAME[Row, Column++] = "   ░ ░   ░ ";
+            DRAWING_GAME[Row, Column++] = "         ░ ";
+            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "           ";
+
+            Row++; Column = 0;
+
+            DRAWING_GAME[Row, Column++] = "          ";
             DRAWING_GAME[Row, Column++] = " ▄▄▄      ";
             DRAWING_GAME[Row, Column++] = "▒████▄    ";
             DRAWING_GAME[Row, Column++] = "▒██  ▀█▄  ";
@@ -174,12 +170,12 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "  ▒   ▒▒ ░";
             DRAWING_GAME[Row, Column++] = "  ░   ▒   ";
             DRAWING_GAME[Row, Column++] = "      ░  ░";
-            DRAWING_GAME[Row, Column++] = "                  ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = "          ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "                  ";
+            DRAWING_GAME[Row, Column++] = "           ";
             DRAWING_GAME[Row, Column++] = " ███▄ ▄███▓";
             DRAWING_GAME[Row, Column++] = "▓██▒▀█▀ ██▒";
             DRAWING_GAME[Row, Column++] = "▓██    ▓██░";
@@ -189,23 +185,23 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "░  ░      ░";
             DRAWING_GAME[Row, Column++] = "░      ░   ";
             DRAWING_GAME[Row, Column++] = "       ░   ";
-            DRAWING_GAME[Row, Column++] = "                  ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "           ";
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "                  ";
-            DRAWING_GAME[Row, Column++] = "▓█████";
-            DRAWING_GAME[Row, Column++] = "▓█   ▀";
-            DRAWING_GAME[Row, Column++] = "▒███  ";
-            DRAWING_GAME[Row, Column++] = "▒▓█  ▄";
+            DRAWING_GAME[Row, Column++] = "       ";
+            DRAWING_GAME[Row, Column++] = "▓█████ ";
+            DRAWING_GAME[Row, Column++] = "▓█   ▀ ";
+            DRAWING_GAME[Row, Column++] = "▒███   ";
+            DRAWING_GAME[Row, Column++] = "▒▓█  ▄ ";
             DRAWING_GAME[Row, Column++] = "░▒████▒";
             DRAWING_GAME[Row, Column++] = "░░ ▒░ ░";
             DRAWING_GAME[Row, Column++] = " ░ ░  ░";
-            DRAWING_GAME[Row, Column++] = "   ░  ";
+            DRAWING_GAME[Row, Column++] = "   ░   ";
             DRAWING_GAME[Row, Column++] = "   ░  ░";
-            DRAWING_GAME[Row, Column++] = "                  ";
-            DRAWING_GAME[Row, Column++] = "";
+            DRAWING_GAME[Row, Column++] = "       ";
+            DRAWING_GAME[Row, Column++] = "       ";
 
             SetToZero(Lengths);
 
@@ -224,9 +220,19 @@ namespace SineWaveTrial
             {
                 for (int j = 0; j < DRAWING_GAME.GetLength(1); j++)
                 {
-                    Lengths[i, j] = DRAWING_GAME[i, j].Length;
+                    Lengths[i + 1, j] = DRAWING_GAME[i, j].Length;
                 }
             }
+
+            Sum(Lengths);
+
+            //PrintArray(Lengths);
+
+            Console.Write("\n");
+
+            Console.WriteLine("\n\n");
+
+            //PrintArray(Lengths);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
@@ -234,145 +240,58 @@ namespace SineWaveTrial
 
             //Normal(prompt);
 
-            YOULazyFuck(Lengths);
-
-            //AnotherTry(DRAWING_GAME, Lengths);
+            LetMeHaveAGo(DRAWING_GAME, Lengths);
+        }
+        static void PrintArray(int[,] Lengths)
+        {
+            for (int i = 0; i < Lengths.GetLength(0); i++)
+            {
+                for (int j = 0; j < Lengths.GetLength(1); j++)
+                {
+                    Console.Write(Lengths[i, j] + "\t|");
+                }
+                Console.WriteLine();
+            }
         }
         static void Sum(int[,] Lengths)
         {
-            /*for (int i = 0; i < Lengths.GetLength(0); i++)
+            for (int i = 0; i < Lengths.GetLength(1); i++)
             {
-                for (int j = 0; j < Lengths.GetLength(1); j++)
-                {
-                    Console.Write(Lengths[i, j] + "\t|");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("\n\n");*/
-            for (int i = 1; i < Lengths.GetLength(0); i++)
-            {
-                for (int j = Lengths.GetLength(1) -1; j >= 1 ; j--)
+                for (int j = Lengths.GetLength(0) - 1; j > 0; j--)
                 {
                     int Count = 0;
 
-                    for (int T = j; T >= 1; T--)
-                        Count += Lengths[i, T];
-
-                    Lengths[i, j] = Count;
+                    for (int T = j; T > 0; T--)
+                    {
+                        Count += Lengths[T, i];
+                    }
+                    Lengths[j, i] = Count;
                 }
-            }
-            /*for (int i = 0; i < Lengths.GetLength(0); i++)
-            {
-                for (int j = 0; j < Lengths.GetLength(1); j++)
-                {
-                    Console.Write(Lengths[i, j] + "\t|");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("\n\n");*/
-        }
-        static void YOULazyFuck(int[,] Lengths)
-        {
-            for (int i = 0; i < Lengths.GetLength(0); i++)
-            {
-                for (int j = 0; j < Lengths.GetLength(1); j++)
-                {
-                    Console.Write(Lengths[i, j] + "\t|");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("\n\n");
-            for (int i = 0; i < Lengths.GetLength(0); i++)
-            {
-                for (int j = Lengths.GetLength(1) -1; j >= 0; j--)
-                {
-                    Console.Write(Lengths[i, j] + "\t|");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("\n\n");
-        }
-        static void FirstTry(string[] DRAWING_GAME, int[] Lengths)
-        {
-            int Count = 0;
-
-            for (int i = 1; true; i++)
-            {
-                double timestamp = Stopwatch.GetTimestamp();
-                double seconds = timestamp / Stopwatch.Frequency;
-
-                //(int)Math.Round((Math.Sin(seconds + 0.1 * i) + 1) * 3)
-
-
-                Console.SetCursorPosition(Count, i);
-
-                Console.Write(DRAWING_GAME[i]);
-
-                Thread.Sleep(3000);
-
-                if (i == 11)
-                    i = 1;
-
-                Count += Lengths[i + 1];
             }
         }
-        static void SecondTry(string[,] DRAWING_GAME)
+        static void PrintLetter(string[,] DRAWING_GAME, int Row, int[,] Lengths, int Sine)
         {
-            for (int i = 1, j = 0; true; i++, j += 10)
+            for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
             {
-                double timestamp = Stopwatch.GetTimestamp();
-                double seconds = timestamp / Stopwatch.Frequency;
-
-                Console.SetCursorPosition(j, (int)Math.Round(Math.Abs(Math.Sin(seconds + 0.1 * i)) * 3));
-
-                for (int T = 0; T < DRAWING_GAME.GetLength(1); T++)
-                {
-                    Console.Write(DRAWING_GAME[i, T]);
-                    Console.WriteLine();
-                }
-
-                if (i == 11)
-                    i = 1;
-                if (j == 110)
-                    j = 0;
+                Console.SetCursorPosition(Lengths[Row, Row], i + Sine);
+                Console.Write(DRAWING_GAME[Row, i]);
             }
         }
-        static void AnotherTry(string[,] DRAWING_GAME, int[,] Lengths)
+        static void LetMeHaveAGo(string[,] DRAWING_GAME, int[,] Lengths)
         {
-            PrintLetter(DRAWING_GAME, 0, Lengths);
+            while (true)
+            {
+                for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
+                {
+                    double timestamp = Stopwatch.GetTimestamp();
+                    double seconds = timestamp / Stopwatch.Frequency;
 
-            PrintLetter(DRAWING_GAME, 1, Lengths);
+                    int Sine = (int)Math.Round((Math.Sin(seconds + 0.6 * i) + 1) * 3);
 
-            PrintLetter(DRAWING_GAME, 2, Lengths);
-
-            PrintLetter(DRAWING_GAME, 3, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 4, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 6, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 7, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 8, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 9, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 10, Lengths);
-
-            //PrintLetter(DRAWING_GAME, 11, Lengths);
-
+                    PrintLetter(DRAWING_GAME, i, Lengths, Sine);
+                } 
+            }
             Console.WriteLine();
         }
-        static void PrintLetter(string[,] DRAWING_GAME, int Row, int[,] Lengths)
-        {
-            for (int i = 1; i < DRAWING_GAME.GetLength(1); i++)
-            {
-                double timestamp = Stopwatch.GetTimestamp();
-                double seconds = timestamp / Stopwatch.Frequency;
-
-                Console.SetCursorPosition(Lengths[Row, Row], i);
-                Console.Write(DRAWING_GAME[Row,i]);
-            }
-        }   
     }
 }
