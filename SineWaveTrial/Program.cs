@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace SineWaveTrial
 {
@@ -33,11 +34,13 @@ namespace SineWaveTrial
  ░ ▒  ▒   ░▒ ░ ▒░  ▒   ▒▒ ░  ▒ ░ ░   ▒ ░░ ░░   ░ ▒░  ░   ░      ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░
  ░ ░  ░   ░░   ░   ░   ▒     ░   ░   ▒ ░   ░   ░ ░ ░ ░   ░    ░ ░   ░   ░   ▒   ░      ░      ░  
    ░       ░           ░  ░    ░     ░           ░       ░          ░       ░  ░       ░      ░  ░
- ░                                                                                                
-                                                                                                   
-";
+ ░";
 
-            int Row = 0, Column = 0;
+            int[,] LetterHeightAndWidth = { {11, 8}, { 10, 9 },{ 10, 11}, { 10, 9 }, { 10, 4 }, { 10, 11 }, { 10, 8 }, { 10, 11 }, { 10, 10 }, { 10, 11 }, { 10, 7 }  };
+
+            PrintArray(PromptToArray(prompt, LetterHeightAndWidth));
+
+            /*int Row = 0, Column = 0;
 
             DRAWING_GAME[Row, Column++] = "        ";
             DRAWING_GAME[Row, Column++] = "▓█████▄ ";
@@ -200,9 +203,9 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "   ░   ";
             DRAWING_GAME[Row, Column++] = "   ░  ░";
             DRAWING_GAME[Row, Column++] = "       ";
-            DRAWING_GAME[Row, Column++] = "       ";
+            DRAWING_GAME[Row, Column++] = "       ";*/
 
-            SetToZero(Lengths);
+            //SetToZero(Lengths);
 
             void SetToZero(int[] Length)
             {
@@ -215,7 +218,7 @@ namespace SineWaveTrial
 
             //PrintArray(Lengths);
 
-            Sum(Lengths);
+            //Sum(Lengths);
 
             Console.Write("\n");
 
@@ -229,9 +232,33 @@ namespace SineWaveTrial
 
             //Normal(prompt);
 
-            LetMeHaveAGo(DRAWING_GAME, Lengths);
+            //LetMeHaveAGo(DRAWING_GAME, Lengths);
         }
-        static void PrintArray(int[] Lengths)
+        static string[] PromptToArray(string Prompt, int[,] Cut)
+        {
+            string[] Letters = new string[Cut.Length];
+
+            int Index = 0;
+
+            while (Prompt[Index] == ' ' || Prompt[Index] == '\r' || Prompt[Index] == '\n')//at the end of each line there is a char \r and \n
+                Index++;
+
+            //use the \r & \n to make an array out of every line GL
+
+            for (int i = 0; i < Cut.Length; i++)
+            {
+                for (int j = 0; j < Cut[i, 0]; j++)
+                {
+                    for (int T = 0; T < Cut[i, 1]; T++)
+                    {
+                        Letters[i] += Prompt[Index + T];
+                    }
+                }
+            }
+
+            return Letters;
+        }
+        static void PrintArray<T>(T [] Lengths)
         {
             for (int i = 0; i < Lengths.Length; i++)
             {
