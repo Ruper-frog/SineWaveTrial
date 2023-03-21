@@ -286,7 +286,7 @@ namespace SineWaveTrial
                     double timestamp = Stopwatch.GetTimestamp();
                     double seconds = timestamp / Stopwatch.Frequency;
 
-                    int Sine = (int)Math.Round((Math.Sin(seconds + 0.6 * i) + 1) * 3);
+                    int Sine = (int)Math.Round((Math.Sin(seconds + 0.6 * -1 * i) + 1) * 3);
 
                     PrintLetter(DRAWING_GAME, i, Lengths, Sine);
                 } 
