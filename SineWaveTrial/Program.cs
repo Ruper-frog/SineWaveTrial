@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using System.Linq.Expressions;
 
 namespace SineWaveTrial
 {
@@ -36,9 +37,11 @@ namespace SineWaveTrial
    ░       ░           ░  ░    ░     ░           ░       ░          ░       ░  ░       ░      ░  ░
  ░";
 
-            int[,] LetterHeightAndWidth = { {11, 8}, { 10, 9 },{ 10, 11}, { 10, 9 }, { 10, 4 }, { 10, 11 }, { 10, 8 }, { 10, 11 }, { 10, 10 }, { 10, 11 }, { 10, 7 }  };
+            int[] LetterHeightAndWidth = { 0, 8, 9, 11, 9, 4, 11, 8, 11, 10, 11, 7 };
 
-            PrintArray(PromptToArray(prompt, LetterHeightAndWidth));
+            //PromptToArray(prompt, LetterHeightAndWidth);
+
+            Console.WriteLine("░▒████▓ ░██▓ ▒██▒ ▓█   ▓██▒░░██▒██▓ ░██░▒██░   ▓██░░▒▓███▀▒   ░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒".Length);
 
             /*int Row = 0, Column = 0;
 
@@ -210,19 +213,19 @@ namespace SineWaveTrial
             void SetToZero(int[] Length)
             {
                 for (int i = 0; i < Lengths.GetLength(0); i++)
-                   Lengths[i] = 0;
+                    Lengths[i] = 0;
             }
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
-                Lengths[i + 1] = DRAWING_GAME[i, 0].Length;
+            //for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
+            //    Lengths[i + 1] = DRAWING_GAME[i, 0].Length;
 
             //PrintArray(Lengths);
 
             //Sum(Lengths);
 
-            Console.Write("\n");
+            //Console.Write("\n");
 
-            Console.WriteLine("\n\n");
+            //Console.WriteLine("\n\n");
 
             //PrintArray(Lengths);
 
@@ -234,31 +237,63 @@ namespace SineWaveTrial
 
             //LetMeHaveAGo(DRAWING_GAME, Lengths);
         }
-        static string[] PromptToArray(string Prompt, int[,] Cut)
+        static string[,] PromptToArray(string Prompt, int[] Lengths)
         {
-            string[] Letters = new string[Cut.Length];
+            string[,] Letters = new string[Lengths.Length, Lengths.Length];
+
+            List<string> Lines = new List<string>();
 
             int Index = 0;
 
             while (Prompt[Index] == ' ' || Prompt[Index] == '\r' || Prompt[Index] == '\n')//at the end of each line there is a char \r and \n
                 Index++;
 
-            //use the \r & \n to make an array out of every line GL
-
-            for (int i = 0; i < Cut.Length; i++)
+            for (int i = 0; i < Letters.Length; i++)
             {
-                for (int j = 0; j < Cut[i, 0]; j++)
+                Lines.Add(LineToString(Prompt, ref Index));
+
+                if (Prompt[Index] == '\r')
+                    Index += 2;
+
+                if (Index == Prompt.Length - 1)//you probably can keep track of the number of \n or \r that u passed
+                    break;
+            }
+
+            Sum(Lengths);
+
+            foreach (int i in Lengths)
+            {
+                Console.WriteLine(i);
+            }
+
+            for (int i = 0; i <= Lines.Count; i++)
+            {
+                for (int j = 0; j <= Lines.Count; j++)
                 {
-                    for (int T = 0; T < Cut[i, 1]; T++)
-                    {
-                        Letters[i] += Prompt[Index + T];
-                    }
+                    int HowMuch = Lengths[j + 1] - Lengths[j];
+
+                    if (j == Lines.Count - 1)
+                        HowMuch = Lengths[j] - Lines[i].Length;
+
+                    Letters[i, j] = Lines[i].Substring(Lengths[j], HowMuch);
                 }
             }
 
             return Letters;
+
+            string LineToString(string pro, ref int Ind)
+            {
+                string Line = "";
+
+                while (pro[Ind] != '\r' && Ind != pro.Length - 1)
+                {
+                    Line += pro[Ind];
+                    Ind++;
+                }
+                return Line;
+            }
         }
-        static void PrintArray<T>(T [] Lengths)
+        static void PrintArray<T>(T[] Lengths)
         {
             for (int i = 0; i < Lengths.Length; i++)
             {
