@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq.Expressions;
 
 namespace SineWaveTrial
 {
@@ -21,15 +20,15 @@ namespace SineWaveTrial
         }
         static void Main(string[] args)
         {
-            string[,] DRAWING_GAME = new string[11, 12];
+            string[,] DRAWING_GAME;
 
             int[] Lengths = new int[12];
 
             string prompt = @"                                                                                                   
-▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████      ▄████  ▄▄▄       ███▄ ▄███▓▓█████
-▒██▀ ██▌▓██ ▒ ██▒▒████▄    ▓█░ █ ░█░▓██▒ ██ ▀█   █  ██▒ ▀█▒    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀
-░██   █▌▓██ ░▄█ ▒▒██  ▀█▄  ▒█░ █ ░█ ▒██▒▓██  ▀█ ██▒▒██░▄▄▄░   ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███  
-░▓█▄   ▌▒██▀▀█▄  ░██▄▄▄▄██ ░█░ █ ░█ ░██░▓██▒  ▐▌██▒░▓█  ██▓   ░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄
+▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████      ▄████  ▄▄▄       ███▄ ▄███▓▓█████ 
+▒██▀ ██▌▓██ ▒ ██▒▒████▄    ▓█░ █ ░█░▓██▒ ██ ▀█   █  ██▒ ▀█▒    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ 
+░██   █▌▓██ ░▄█ ▒▒██  ▀█▄  ▒█░ █ ░█ ▒██▒▓██  ▀█ ██▒▒██░▄▄▄░   ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███   
+░▓█▄   ▌▒██▀▀█▄  ░██▄▄▄▄██ ░█░ █ ░█ ░██░▓██▒  ▐▌██▒░▓█  ██▓   ░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄ 
 ░▒████▓ ░██▓ ▒██▒ ▓█   ▓██▒░░██▒██▓ ░██░▒██░   ▓██░░▒▓███▀▒   ░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒
  ▒▒▓  ▒ ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▓░▒ ▒  ░▓  ░ ▒░   ▒ ▒  ░▒   ▒     ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░
  ░ ▒  ▒   ░▒ ░ ▒░  ▒   ▒▒ ░  ▒ ░ ░   ▒ ░░ ░░   ░ ▒░  ░   ░      ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░
@@ -39,7 +38,7 @@ namespace SineWaveTrial
 
             int[] LetterHeightAndWidth = { 0, 8, 9, 10, 9, 4, 11, 8, 11, 10, 11, 7 };
 
-            PromptToArray(prompt, LetterHeightAndWidth);
+            DRAWING_GAME = PromptToArray(prompt, LetterHeightAndWidth);
 
             /*int Row = 0, Column = 0;
 
@@ -206,7 +205,7 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "       ";
             DRAWING_GAME[Row, Column++] = "       ";*/
 
-            //SetToZero(Lengths);
+            SetToZero(Lengths);
 
             void SetToZero(int[] Length)
             {
@@ -214,14 +213,12 @@ namespace SineWaveTrial
                     Lengths[i] = 0;
             }
 
-            //for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
-            //    Lengths[i + 1] = DRAWING_GAME[i, 0].Length;
+            for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
+                Lengths[i + 1] = DRAWING_GAME[i, 0].Length;
 
             //PrintArray(Lengths);
 
-            //Sum(Lengths);
-
-            //Console.Write("\n");
+            Sum(Lengths);
 
             //Console.WriteLine("\n\n");
 
@@ -233,11 +230,11 @@ namespace SineWaveTrial
 
             //Normal(prompt);
 
-            //LetMeHaveAGo(DRAWING_GAME, Lengths);
+            LetMeHaveAGo(DRAWING_GAME, Lengths);
         }
-        static string[,] PromptToArray(string Prompt, int[] Lengths)
+        static string[,] PromptToArray(string Prompt, int[] Lengths)//all we need is the prompt and a array of the length of each letter
         {
-            string[,] Letters = new string[Lengths.Length, Lengths.Length];
+            string[,] Letters = new string[Lengths.Length - 1, Lengths.Length];
 
             List<string> Lines = new List<string>();
 
@@ -246,49 +243,89 @@ namespace SineWaveTrial
             while (Prompt[Index] == ' ' || Prompt[Index] == '\r' || Prompt[Index] == '\n')//at the end of each line there is a char \r and \n
                 Index++;
 
-            for (int i = 0; i < Letters.Length; i++)
+            for (int i = 0; i < Letters.Length; i++)//Make a list with literally each line as a variable
             {
                 Lines.Add(LineToString(Prompt, ref Index));
 
-                if (Prompt[Index] == '\r')
+                if (Index != Prompt.Length && Prompt[Index] == '\r')
                     Index += 2;
 
-                if (Index == Prompt.Length - 1)//you probably can keep track of the number of \n or \r that u passed
+                if (Index == Prompt.Length)
                     break;
+            }
+
+            int Largest = FindLargestNumber(Lines);
+
+            for (int i = 0; i < Lines.Count; i++)//adding ' '(space) to the lines if needed
+            {
+                for (int j = 0; Lines[i].Length != Largest; j++)
+                {
+                    Lines[i] += ' ';
+                }
             }
 
             Sum(Lengths);
 
-            foreach (int i in Lengths)
+            for (int i = 0; i <= Lines.Count; i++)//adding each letter to the array line by line
             {
-                Console.WriteLine(i);
-            }
-
-            for (int i = 0; i <= Lines.Count; i++)
-            {
-                for (int j = 0; j <= Lines.Count; j++)
+                for (int j = 0; j < Lines.Count; j++)
                 {
-                    int HowMuch = Lengths[j + 1] - Lengths[j];
-
-                    if (j == Lines.Count - 1)
-                        HowMuch = Lengths[j] - Lines[i].Length;
-
-                    Letters[i, j] = Lines[i].Substring(Lengths[j], HowMuch);
+                    Letters[i, j + 1] = Lines[j].Substring(Lengths[i], Lengths[i + 1] - Lengths[i]);
                 }
             }
 
+            AddSpaceToTopAndBottom(Letters);
+
             return Letters;
 
-            string LineToString(string pro, ref int Ind)
+            string LineToString(string pro, ref int Ind)//takes a line from a string and making into another string
             {
                 string Line = "";
 
-                while (pro[Ind] != '\r' && Ind != pro.Length - 1)
+                while (Ind != pro.Length && pro[Ind] != '\r')
                 {
                     Line += pro[Ind];
                     Ind++;
                 }
                 return Line;
+            }
+            int FindLargestNumber(List<string> numbers)//finding the largest line length
+            {
+                int largest = numbers[0].Length;
+                for (int i = 1; i < Lines.Count; i++)
+                {
+                    if (Lines[i].Length > largest)
+                    {
+                        largest = Lines[i].Length;
+                    }
+                }
+                return largest;
+            }
+            void AddSpaceToTopAndBottom(string[,] StringArray)//adding space to the top and to the bottom of the letters
+            {
+                for (int i = 0; i < StringArray.GetLength(0); i++)
+                {
+                    int LargestLine = StringArray[i, 1].Length;
+
+                    for (int j = 0; j < StringArray.GetLength(1); j++)
+                    {
+                        if (j != 0 && j != StringArray.GetLength(1) - 1)
+                        {
+                            if (StringArray[i, j].Length > LargestLine)
+                                LargestLine = StringArray[i, j].Length;
+                        }
+                    }
+
+                    string space = "";
+
+                    for (int j = 0; j < LargestLine; j++)
+                    {
+                        space += ' ';
+                    }
+
+                    StringArray[i, 0] = space;
+                    StringArray[i, StringArray.GetLength(1) - 1] = space;
+                }
             }
         }
         static void PrintArray<T>(T[] Lengths)
