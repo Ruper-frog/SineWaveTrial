@@ -56,8 +56,8 @@ namespace SineWaveTrial
 
             DRAWING_GAME[Row, Column++] = "         ";
             DRAWING_GAME[Row, Column++] = " ██▀███  ";
-            DRAWING_GAME[Row, Column++] = "▓██ ▒ ██ ";
-            DRAWING_GAME[Row, Column++] = "▓██ ░▄█  ";
+            DRAWING_GAME[Row, Column++] = "▓██ ▒ ██▒";
+            DRAWING_GAME[Row, Column++] = "▓██ ░▄█ ▒";
             DRAWING_GAME[Row, Column++] = "▒██▀▀█▄  ";
             DRAWING_GAME[Row, Column++] = "░██▓ ▒██▒";
             DRAWING_GAME[Row, Column++] = "░ ▒▓ ░▒▓░";
@@ -69,18 +69,18 @@ namespace SineWaveTrial
 
             Row++; Column = 0;
 
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "  ▄▄▄      ";
-            DRAWING_GAME[Row, Column++] = "▒▒████▄    ";
-            DRAWING_GAME[Row, Column++] = "▒▒██  ▀█▄  ";
-            DRAWING_GAME[Row, Column++] = " ░██▄▄▄▄██ ";
-            DRAWING_GAME[Row, Column++] = "▒ ▓█   ▓██▒";
-            DRAWING_GAME[Row, Column++] = "░ ▒▒   ▓▒█░";
-            DRAWING_GAME[Row, Column++] = "░  ▒   ▒▒ ░";
-            DRAWING_GAME[Row, Column++] = "   ░   ▒   ";
-            DRAWING_GAME[Row, Column++] = "       ░  ░";
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "           ";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = " ▄▄▄      ";
+            DRAWING_GAME[Row, Column++] = "▒████▄    ";
+            DRAWING_GAME[Row, Column++] = "▒██  ▀█▄  ";
+            DRAWING_GAME[Row, Column++] = "░██▄▄▄▄██ ";
+            DRAWING_GAME[Row, Column++] = " ▓█   ▓██▒";
+            DRAWING_GAME[Row, Column++] = " ▒▒   ▓▒█░";
+            DRAWING_GAME[Row, Column++] = "  ▒   ▒▒ ░";
+            DRAWING_GAME[Row, Column++] = "  ░   ▒   ";
+            DRAWING_GAME[Row, Column++] = "      ░  ░";
+            DRAWING_GAME[Row, Column++] = "          ";
+            DRAWING_GAME[Row, Column++] = "          ";
 
             Row++; Column = 0;
 
