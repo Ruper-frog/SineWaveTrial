@@ -24,6 +24,8 @@ namespace SineWaveTrial
 
             int[] Lengths = new int[12];
 
+            int[] SecondLengths = new int[9];
+
             string prompt = @"                                                                                                   
 ▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████      ▄████  ▄▄▄       ███▄ ▄███▓▓█████ 
 ▒██▀ ██▌▓██ ▒ ██▒▒████▄    ▓█░ █ ░█░▓██▒ ██ ▀█   █  ██▒ ▀█▒    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ 
@@ -36,9 +38,20 @@ namespace SineWaveTrial
    ░       ░           ░  ░    ░     ░           ░       ░          ░       ░  ░       ░      ░  ░
  ░";
 
-            int[] LetterHeightAndWidth = { 0, 8, 9, 10, 9, 4, 11, 8, 11, 10, 11, 7 };
+            string SecondPrompt = @"
+██████╗ ███████╗ ██████╗ ██╗███████╗████████╗███████╗██████╗ 
+██╔══██╗██╔════╝██╔════╝ ██║██╔════╝╚══██╔══╝██╔════╝██╔══██╗
+██████╔╝█████╗  ██║  ███╗██║███████╗   ██║   █████╗  ██████╔╝
+██╔══██╗██╔══╝  ██║   ██║██║╚════██║   ██║   ██╔══╝  ██╔══██╗
+██║  ██║███████╗╚██████╔╝██║███████║   ██║   ███████╗██║  ██║
+╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+ ";
 
-            DRAWING_GAME = PromptToArray(prompt, LetterHeightAndWidth);
+            int[] LetterWidth = { 0, 8, 9, 10, 9, 4, 11, 8, 11, 10, 11, 7 };
+
+            int[] SecondLetterWidth = { 0, 8, 8, 9, 3, 8, 9, 8, 8 };
+
+            DRAWING_GAME = PromptToArray(SecondPrompt, SecondLetterWidth);
 
             /*int Row = 0, Column = 0;
 
@@ -205,34 +218,34 @@ namespace SineWaveTrial
             DRAWING_GAME[Row, Column++] = "       ";
             DRAWING_GAME[Row, Column++] = "       ";*/
 
-            SetToZero(Lengths);
+            SetToZero(SecondLengths);
 
             void SetToZero(int[] Length)
             {
-                for (int i = 0; i < Lengths.GetLength(0); i++)
-                    Lengths[i] = 0;
+                for (int i = 0; i < Length.GetLength(0); i++)
+                    Length[i] = 0;
             }
 
             for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
-                Lengths[i + 1] = DRAWING_GAME[i, 0].Length;
+                SecondLengths[i + 1] = DRAWING_GAME[i, 0].Length;
 
             //PrintArray(Lengths);
 
-            Sum(Lengths);
+            Sum(SecondLengths);
 
             //Console.WriteLine("\n\n");
 
             //PrintArray(Lengths);
 
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             Console.CursorVisible = false;
 
             //Normal(prompt);
 
-            LetMeHaveAGo(DRAWING_GAME, Lengths);
+            LetMeHaveAGo(DRAWING_GAME, SecondLengths);
         }
-        static string[,] PromptToArray(string Prompt, int[] Lengths)//all we need is the prompt and a array of the length of each letter
+        static string[,] PromptToArray(string Prompt, int[] Lengths)//all we need is the prompt and a array of the length of each letter ||&&|| and to change the arrays size
         {
             string[,] Letters = new string[Lengths.Length - 1, Lengths.Length];
 
