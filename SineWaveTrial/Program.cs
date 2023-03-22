@@ -37,7 +37,7 @@ namespace SineWaveTrial
    ░       ░           ░  ░    ░     ░           ░       ░          ░       ░  ░       ░      ░  ░
  ░";
 
-            int[] LetterHeightAndWidth = { 0, 8, 9, 11, 9, 4, 11, 8, 11, 10, 11, 7 };
+            int[] LetterHeightAndWidth = { 0, 8, 9, 10, 9, 4, 11, 8, 11, 10, 11, 7 };
 
             PromptToArray(prompt, LetterHeightAndWidth);
 
