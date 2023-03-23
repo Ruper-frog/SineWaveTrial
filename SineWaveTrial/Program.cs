@@ -22,10 +22,6 @@ namespace SineWaveTrial
         {
             string[,] DRAWING_GAME;
 
-            int[] Lengths = new int[12];
-
-            int[] SecondLengths = new int[9];
-
             string prompt = @"                                                                                                   
 ▓█████▄  ██▀███   ▄▄▄       █     █░ ██▓ ███▄    █   ▄████      ▄████  ▄▄▄       ███▄ ▄███▓▓█████ 
 ▒██▀ ██▌▓██ ▒ ██▒▒████▄    ▓█░ █ ░█░▓██▒ ██ ▀█   █  ██▒ ▀█▒    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ 
@@ -51,172 +47,11 @@ namespace SineWaveTrial
 
             int[] SecondLetterWidth = { 0, 8, 8, 9, 3, 8, 9, 8, 8 };
 
+            int[] Lengths = new int[LetterWidth.Length];
+
+            int[] SecondLengths = new int[SecondLetterWidth.Length];
+
             DRAWING_GAME = PromptToArray(SecondPrompt, SecondLetterWidth);
-
-            /*int Row = 0, Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "        ";
-            DRAWING_GAME[Row, Column++] = "▓█████▄ ";
-            DRAWING_GAME[Row, Column++] = "▒██▀ ██▌";
-            DRAWING_GAME[Row, Column++] = "░██   █▌";
-            DRAWING_GAME[Row, Column++] = "░▓█▄   ▌";
-            DRAWING_GAME[Row, Column++] = "░▒████▓ ";
-            DRAWING_GAME[Row, Column++] = " ▒▒▓  ▒ ";
-            DRAWING_GAME[Row, Column++] = " ░ ▒  ▒ ";
-            DRAWING_GAME[Row, Column++] = " ░ ░  ░ ";
-            DRAWING_GAME[Row, Column++] = "   ░    ";
-            DRAWING_GAME[Row, Column++] = " ░      ";
-            DRAWING_GAME[Row, Column++] = "        ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "         ";
-            DRAWING_GAME[Row, Column++] = " ██▀███  ";
-            DRAWING_GAME[Row, Column++] = "▓██ ▒ ██ ";
-            DRAWING_GAME[Row, Column++] = "▓██ ░▄█  ";
-            DRAWING_GAME[Row, Column++] = "▒██▀▀█▄  ";
-            DRAWING_GAME[Row, Column++] = "░██▓ ▒██▒";
-            DRAWING_GAME[Row, Column++] = "░ ▒▓ ░▒▓░";
-            DRAWING_GAME[Row, Column++] = "  ░▒ ░ ▒░";
-            DRAWING_GAME[Row, Column++] = "  ░░   ░ ";
-            DRAWING_GAME[Row, Column++] = "   ░     ";
-            DRAWING_GAME[Row, Column++] = "         ";
-            DRAWING_GAME[Row, Column++] = "         ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "  ▄▄▄      ";
-            DRAWING_GAME[Row, Column++] = "▒▒████▄    ";
-            DRAWING_GAME[Row, Column++] = "▒▒██  ▀█▄  ";
-            DRAWING_GAME[Row, Column++] = " ░██▄▄▄▄██ ";
-            DRAWING_GAME[Row, Column++] = "▒ ▓█   ▓██▒";
-            DRAWING_GAME[Row, Column++] = "░ ▒▒   ▓▒█░";
-            DRAWING_GAME[Row, Column++] = "░  ▒   ▒▒ ░";
-            DRAWING_GAME[Row, Column++] = "   ░   ▒   ";
-            DRAWING_GAME[Row, Column++] = "       ░  ░";
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "           ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "         ";
-            DRAWING_GAME[Row, Column++] = " █     █░";
-            DRAWING_GAME[Row, Column++] = "▓█░ █ ░█░";
-            DRAWING_GAME[Row, Column++] = "▒█░ █ ░█ ";
-            DRAWING_GAME[Row, Column++] = "░█░ █ ░█ ";
-            DRAWING_GAME[Row, Column++] = "░░██▒██▓ ";
-            DRAWING_GAME[Row, Column++] = "░ ▓░▒ ▒  ";
-            DRAWING_GAME[Row, Column++] = "  ▒ ░ ░  ";
-            DRAWING_GAME[Row, Column++] = "  ░   ░  ";
-            DRAWING_GAME[Row, Column++] = "    ░    ";
-            DRAWING_GAME[Row, Column++] = "         ";
-            DRAWING_GAME[Row, Column++] = "         ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "    ";
-            DRAWING_GAME[Row, Column++] = " ██▓";
-            DRAWING_GAME[Row, Column++] = "▓██▒";
-            DRAWING_GAME[Row, Column++] = "▒██▒";
-            DRAWING_GAME[Row, Column++] = "░██░";
-            DRAWING_GAME[Row, Column++] = "░██░";
-            DRAWING_GAME[Row, Column++] = "░▓  ";
-            DRAWING_GAME[Row, Column++] = " ▒ ░";
-            DRAWING_GAME[Row, Column++] = " ▒ ░";
-            DRAWING_GAME[Row, Column++] = " ░  ";
-            DRAWING_GAME[Row, Column++] = "    ";
-            DRAWING_GAME[Row, Column++] = "    ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = " ███▄    █ ";
-            DRAWING_GAME[Row, Column++] = " ██ ▀█   █ ";
-            DRAWING_GAME[Row, Column++] = "▓██  ▀█ ██▒";
-            DRAWING_GAME[Row, Column++] = "▓██▒  ▐▌██▒";
-            DRAWING_GAME[Row, Column++] = "▒██░   ▓██░";
-            DRAWING_GAME[Row, Column++] = "░ ▒░   ▒ ▒ ";
-            DRAWING_GAME[Row, Column++] = "░ ░░   ░ ▒░";
-            DRAWING_GAME[Row, Column++] = "   ░   ░ ░ ";
-            DRAWING_GAME[Row, Column++] = "         ░ ";
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "           ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "        ";
-            DRAWING_GAME[Row, Column++] = "  ▄████ ";
-            DRAWING_GAME[Row, Column++] = " ██▒ ▀█▒";
-            DRAWING_GAME[Row, Column++] = "▒██░▄▄▄░";
-            DRAWING_GAME[Row, Column++] = "░▓█  ██▓";
-            DRAWING_GAME[Row, Column++] = "░▒▓███▀▒";
-            DRAWING_GAME[Row, Column++] = " ░▒   ▒ ";
-            DRAWING_GAME[Row, Column++] = "  ░   ░ ";
-            DRAWING_GAME[Row, Column++] = "░ ░   ░ ";
-            DRAWING_GAME[Row, Column++] = "      ░ ";
-            DRAWING_GAME[Row, Column++] = "        ";
-            DRAWING_GAME[Row, Column++] = "        ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "     ▄████ ";
-            DRAWING_GAME[Row, Column++] = "    ██▒ ▀█▒";
-            DRAWING_GAME[Row, Column++] = "   ▒██░▄▄▄░";
-            DRAWING_GAME[Row, Column++] = "   ░▓█  ██▓";
-            DRAWING_GAME[Row, Column++] = "   ░▒▓███▀▒";
-            DRAWING_GAME[Row, Column++] = "    ░▒   ▒ ";
-            DRAWING_GAME[Row, Column++] = "     ░   ░ ";
-            DRAWING_GAME[Row, Column++] = "   ░ ░   ░ ";
-            DRAWING_GAME[Row, Column++] = "         ░ ";
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "           ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "          ";
-            DRAWING_GAME[Row, Column++] = " ▄▄▄      ";
-            DRAWING_GAME[Row, Column++] = "▒████▄    ";
-            DRAWING_GAME[Row, Column++] = "▒██  ▀█▄  ";
-            DRAWING_GAME[Row, Column++] = "░██▄▄▄▄██ ";
-            DRAWING_GAME[Row, Column++] = " ▓█   ▓██▒";
-            DRAWING_GAME[Row, Column++] = " ▒▒   ▓▒█░";
-            DRAWING_GAME[Row, Column++] = "  ▒   ▒▒ ░";
-            DRAWING_GAME[Row, Column++] = "  ░   ▒   ";
-            DRAWING_GAME[Row, Column++] = "      ░  ░";
-            DRAWING_GAME[Row, Column++] = "          ";
-            DRAWING_GAME[Row, Column++] = "          ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = " ███▄ ▄███▓";
-            DRAWING_GAME[Row, Column++] = "▓██▒▀█▀ ██▒";
-            DRAWING_GAME[Row, Column++] = "▓██    ▓██░";
-            DRAWING_GAME[Row, Column++] = "▒██    ▒██ ";
-            DRAWING_GAME[Row, Column++] = "▒██▒   ░██▒";
-            DRAWING_GAME[Row, Column++] = "░ ▒░   ░  ░";
-            DRAWING_GAME[Row, Column++] = "░  ░      ░";
-            DRAWING_GAME[Row, Column++] = "░      ░   ";
-            DRAWING_GAME[Row, Column++] = "       ░   ";
-            DRAWING_GAME[Row, Column++] = "           ";
-            DRAWING_GAME[Row, Column++] = "           ";
-
-            Row++; Column = 0;
-
-            DRAWING_GAME[Row, Column++] = "       ";
-            DRAWING_GAME[Row, Column++] = "▓█████ ";
-            DRAWING_GAME[Row, Column++] = "▓█   ▀ ";
-            DRAWING_GAME[Row, Column++] = "▒███   ";
-            DRAWING_GAME[Row, Column++] = "▒▓█  ▄ ";
-            DRAWING_GAME[Row, Column++] = "░▒████▒";
-            DRAWING_GAME[Row, Column++] = "░░ ▒░ ░";
-            DRAWING_GAME[Row, Column++] = " ░ ░  ░";
-            DRAWING_GAME[Row, Column++] = "   ░   ";
-            DRAWING_GAME[Row, Column++] = "   ░  ░";
-            DRAWING_GAME[Row, Column++] = "       ";
-            DRAWING_GAME[Row, Column++] = "       ";*/
 
             SetToZero(SecondLengths);
 
