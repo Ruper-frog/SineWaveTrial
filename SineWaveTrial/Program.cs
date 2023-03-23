@@ -53,30 +53,22 @@ namespace SineWaveTrial
 
             DRAWING_GAME = PromptToArray(SecondPrompt, SecondLetterWidth);
 
-            SetToZero(SecondLengths);
+            SetToZero(SecondLengths);//seting the length array to zero
 
-            void SetToZero(int[] Length)
+            void SetToZero(int[] Length)//funciton that sets an array to zero
             {
                 for (int i = 0; i < Length.GetLength(0); i++)
                     Length[i] = 0;
             }
 
-            for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)
+            for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)//Inserting the length of each letter
                 SecondLengths[i + 1] = DRAWING_GAME[i, 0].Length;
 
-            //PrintArray(Lengths);
-
-            Sum(SecondLengths);
-
-            //Console.WriteLine("\n\n");
-
-            //PrintArray(Lengths);
+            Sum(SecondLengths);//suming the letters length verticaly
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             Console.CursorVisible = false;
-
-            //Normal(prompt);
 
             LetMeHaveAGo(DRAWING_GAME, SecondLengths);
         }
@@ -176,7 +168,7 @@ namespace SineWaveTrial
                 }
             }
         }
-        static void PrintArray<T>(T[] Lengths)
+        static void PrintArray<T>(T[] Lengths)//prints an array
         {
             for (int i = 0; i < Lengths.Length; i++)
             {
@@ -184,7 +176,7 @@ namespace SineWaveTrial
                 Console.WriteLine();
             }
         }
-        static void Sum(int[] Lengths)
+        static void Sum(int[] Lengths)//summing an int array to zero
         {
             for (int i = 0; i < Lengths.Length; i++)
             {
@@ -196,7 +188,7 @@ namespace SineWaveTrial
                 Lengths[Lengths.Length - 1 - i] = Count;
             }
         }
-        static void PrintLetter(string[,] DRAWING_GAME, int Row, int[] Lengths, int Sine)
+        static void PrintLetter(string[,] DRAWING_GAME, int Row, int[] Lengths, int Sine)//printing a letter
         {
             for (int i = 0; i < DRAWING_GAME.GetLength(1); i++)
             {
@@ -204,7 +196,7 @@ namespace SineWaveTrial
                 Console.Write(DRAWING_GAME[Row, i]);
             }
         }
-        static void LetMeHaveAGo(string[,] DRAWING_GAME, int[] Lengths)
+        static void LetMeHaveAGo(string[,] DRAWING_GAME, int[] Lengths)//the idea
         {
             while (true)
             {
