@@ -53,9 +53,9 @@ namespace SineWaveTrial
 
             DRAWING_GAME = PromptToArray(SecondPrompt, SecondLetterWidth);
 
-            SetToZero(SecondLengths);//seting the length array to zero
+            SetToZero(SecondLengths);//setting the length array to zero
 
-            void SetToZero(int[] Length)//funciton that sets an array to zero
+            void SetToZero(int[] Length)//function that sets an array to zero
             {
                 for (int i = 0; i < Length.GetLength(0); i++)
                     Length[i] = 0;
@@ -64,7 +64,7 @@ namespace SineWaveTrial
             for (int i = 0; i < DRAWING_GAME.GetLength(0); i++)//Inserting the length of each letter
                 SecondLengths[i + 1] = DRAWING_GAME[i, 0].Length;
 
-            Sum(SecondLengths);//suming the letters length verticaly
+            Sum(SecondLengths);//summing the letters length vertically
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
