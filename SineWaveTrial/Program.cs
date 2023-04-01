@@ -40,8 +40,7 @@ namespace SineWaveTrial
 ██████╔╝█████╗  ██║  ███╗██║███████╗   ██║   █████╗  ██████╔╝
 ██╔══██╗██╔══╝  ██║   ██║██║╚════██║   ██║   ██╔══╝  ██╔══██╗
 ██║  ██║███████╗╚██████╔╝██║███████║   ██║   ███████╗██║  ██║
-╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
- ";
+╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝";
 
             int[] LetterWidth = { 0, 8, 9, 10, 9, 4, 11, 8, 11, 10, 11, 7 };
 
@@ -72,7 +71,7 @@ namespace SineWaveTrial
 
             LetMeHaveAGo(DRAWING_GAME, SecondLengths);
         }
-        static string[,] PromptToArray(string Prompt, int[] Lengths)//all we need is the prompt and a array of the length of each letter ||&&|| and to change the arrays size
+        static string[,] PromptToArray(string Prompt, int[] Lengths)//all we need is the prompt and a array of the length of each letter
         {
             string[,] Letters = new string[Lengths.Length - 1, Lengths.Length];
 
@@ -93,6 +92,9 @@ namespace SineWaveTrial
                 if (Index == Prompt.Length)
                     break;
             }
+
+            if (Lines[Lines.Count - 1].Trim(' ') != "")//If there isn't an empty line at the end
+                Lines.Add(" ");
 
             int Largest = FindLargestNumber(Lines);
 
